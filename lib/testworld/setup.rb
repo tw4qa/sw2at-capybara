@@ -2,7 +2,7 @@ class TestWorld
 
   module Setup
 
-    def init_tw(options = BASE_OPTIONS)
+    def init_tw(options = {})
       before(:each) do
         Timecop.travel( TestWorld.moment )
         @tw = TestWorld.new(options)
