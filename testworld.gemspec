@@ -7,7 +7,6 @@ Gem::Specification.new do |s|
   s.authors     = ['Vitaly Tarasenko']
   s.email       = 'vetal.tarasenko@gmail.com'
   s.files       = ['lib/testworld.rb']
-  s.homepage    =
-      'http://tw.coming.soon'
-  s.license       = 'MIT'
+  s.homepage    = 'http://tw.coming.soon'
+  s.license     = 'MIT'
 end
