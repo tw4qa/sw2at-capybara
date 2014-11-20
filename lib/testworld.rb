@@ -8,4 +8,10 @@ class TestWorld
 
   include Methods
 
+  attr_reader :options
+
+  def initialize(opts)
+    @options = opts
+  end
+
 end

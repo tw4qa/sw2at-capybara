@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'testworld'
-  s.version     = '0.0.1'
+  s.version     = '0.0.0'
   s.date        = '2014-11-20'
   s.summary     = 'Test World'
   s.description = 'Tool for end-to-end tests'
