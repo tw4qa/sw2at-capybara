@@ -1,3 +1,0 @@
-class TestWorld
-
-end
