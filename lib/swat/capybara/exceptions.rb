@@ -10,7 +10,7 @@ module Swat
         end
 
         def message
-          MESSAGE
+          self.class::MESSAGE
         end
       end
 
