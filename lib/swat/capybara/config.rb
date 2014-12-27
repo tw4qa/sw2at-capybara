@@ -9,8 +9,6 @@ module Swat
           output: { enabled: true, started: ?>, step: ?. }
       }
       def initialize(rspec_config, opts = {})
-        ::Capybara::Node::Base.include Swat::Capybara::Helpers
-        ::Capybara::Node::Simple.include Swat::Capybara::Helpers
         ::Capybara::Session.include Swat::Capybara::Helpers
         rspec_config.include Swat::Capybara::Helpers, type: :feature
         @options = DEFAULT_OPTIONS.merge opts

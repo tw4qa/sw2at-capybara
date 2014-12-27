@@ -51,9 +51,11 @@ module Swat
         find(*args)
       end
 
+
       def click_by_text(text, tag='span')
         safe_click(tag, text: text)
       end
+
 
       def check_text(text, selector=Capybara.config.default_selector, tries=Capybara.config.tries)
         result = nil
