@@ -72,6 +72,7 @@ module Swat
           print_failed_args(v, [text, selector], "    Text '#{k}' NOT found") unless v
         end
         raise TextNotFound unless result.values.all?{|v|v}
+        true
       end
 
       def wait_for_condition(tries = Capybara.config.tries)
