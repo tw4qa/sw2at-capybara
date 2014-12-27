@@ -12,7 +12,7 @@ module Swat
         ::Capybara::Session.include Swat::Capybara::Helpers
         rspec_config.include Swat::Capybara::Helpers, type: :feature
         @options = DEFAULT_OPTIONS.merge opts
-        @options[:output] = DEFAULT_OPTIONS[:output].merge opts[:output]
+        @options[:output] = DEFAULT_OPTIONS[:output].merge(opts[:output] || {})
       end
 
       def options
