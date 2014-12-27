@@ -81,11 +81,11 @@ module Swat
       end
 
       def swc_puts *args
-        puts(*args)
+        puts(*args) if Capybara.config.output[:enabled]
       end
 
       def swc_print *args
-        print(*args)
+        print(*args) if Capybara.config.output[:enabled]
       end
     end
 
