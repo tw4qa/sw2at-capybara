@@ -84,6 +84,7 @@ module Swat
           sleep(Capybara.config.min_pause)
           false
         end
+        binding.pry if ENV['FPRY']
         false
       end
 

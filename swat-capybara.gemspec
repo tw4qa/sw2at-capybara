@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency('capybara', '~> 2.2.0')
   s.add_runtime_dependency('selenium-webdriver', '~> 2.43.0')
+  s.add_runtime_dependency('pry', '~> 0.10.1')
 
   s.homepage    = 'http://tw.coming.soon'
   s.license     = 'MIT'
