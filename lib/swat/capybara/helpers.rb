@@ -3,8 +3,8 @@ require 'swat/capybara/colorize'
 
 module Swat
   module Capybara
-
     module Helpers
+      include Capybara::Exceptions
 
       def pause(seconds = Capybara.config.default_pause)
         sleep seconds
