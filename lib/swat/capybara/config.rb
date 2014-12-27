@@ -23,6 +23,10 @@ module Swat
         options[:default_pause]
       end
 
+      def default_selector
+        options[:default_selector]
+      end
+
       def min_pause
         options[:min_pause]
       end
