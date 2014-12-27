@@ -1,7 +1,14 @@
 module Swat
   module Capybara
     require 'swat/capybara/helpers'
-    require 'swat/capybara/setup'
-    extend Setup
+    require 'swat/capybara/config'
+
+    def self.setup(rspec_config, opts = {})
+      @config ||= Config.new(rspec_config, opts)
+    end
+
+    def self.config
+      @config
+    end
   end
 end
