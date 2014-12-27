@@ -10,6 +10,15 @@ module Swat
         sleep seconds
       end
 
+      def explain_step(message)
+        swc_print "\n - #{message.blue} "
+        @swc_step ||= 1
+        yield() if block_given?
+        @swc_step += 1
+      end
+
+      alias_method :step, :explain_step
+
       def check_condition(tries = Capybara.config.tries)
         res = wait_for_condition(tries) do
           !!yield()
