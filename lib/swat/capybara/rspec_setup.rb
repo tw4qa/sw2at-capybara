@@ -1,5 +1,5 @@
 module Swat
-  module TestWorld
+  module Capybara
     module RspecSetup
 
       def init_capybara
