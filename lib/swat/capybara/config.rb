@@ -1,5 +1,7 @@
 module Swat
   module Capybara
+    require 'swat/capybara/rspec_setup'
+
     class Config
       DEFAULT_OPTIONS = {
           default_pause: 0.5,
@@ -11,6 +13,7 @@ module Swat
       def initialize(rspec_config, opts = {})
         ::Capybara::Session.include Swat::Capybara::Helpers
         rspec_config.include Swat::Capybara::Helpers, type: :feature
+        rspec_config.extend Swat::Capybara::RspecSetup
         @options = DEFAULT_OPTIONS.merge opts
         @options[:output] = DEFAULT_OPTIONS[:output].merge(opts[:output] || {})
       end
