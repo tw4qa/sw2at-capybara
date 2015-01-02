@@ -88,10 +88,10 @@ module Swat
           container = safe_find(selector)
           result = Hash[
               [ text ].flatten.map do |word|
-                [ word, container.text.include?(word) ]
+                [ word, !container.text.include?(word) ]
               end
           ]
-          result.values.all?{|v|!v}
+          result.values.all?{|v|v}
         end
         result.each do |k,v|
           print_failed_args(v, [text, selector], "\nText '#{k}' WAS found") unless v
