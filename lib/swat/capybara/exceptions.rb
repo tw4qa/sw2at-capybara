@@ -30,6 +30,10 @@ module Swat
         MESSAGE = 'Text not found'
       end
 
+      class TextWasFound < SwatException
+        MESSAGE = 'Text was found'
+      end
+
     end
   end
 end

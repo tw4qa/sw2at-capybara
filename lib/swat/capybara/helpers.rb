@@ -51,6 +51,13 @@ module Swat
         find(*args)
       end
 
+      def safe_find_all(*args)
+        res = wait_for_condition do
+          all(*args).count > 0
+        end
+        print_failed_args(res, args)
+        all(*args)
+      end
 
       def click_by_text(text, tag='span')
         safe_click(tag, text: text)
@@ -69,9 +76,27 @@ module Swat
           result.values.all?{|v|v}
         end
         result.each do |k,v|
-          print_failed_args(v, [text, selector], "    Text '#{k}' NOT found") unless v
+          print_failed_args(v, [text, selector], "\nText '#{k}' NOT found") unless v
         end
         raise TextNotFound unless result.values.all?{|v|v}
+        true
+      end
+
+      def check_no_text(text, selector=Capybara.config.default_selector, tries=Capybara.config.tries)
+        result = nil
+        wait_for_condition(tries) do
+          container = safe_find(selector)
+          result = Hash[
+              [ text ].flatten.map do |word|
+                [ word, container.text.include?(word) ]
+              end
+          ]
+          result.values.all?{|v|!v}
+        end
+        result.each do |k,v|
+          print_failed_args(v, [text, selector], "\nText '#{k}' WAS found") unless v
+        end
+        raise TextWasFound unless result.values.all?{|v|v}
         true
       end
 
@@ -96,6 +121,8 @@ module Swat
       def swc_puts *args
         puts(*args) if Capybara.config.output[:enabled]
       end
+      alias_method :demo_message, :swc_puts
+      alias_method :comment, :swc_puts
 
       def swc_print *args
         print(*args) if Capybara.config.output[:enabled]
