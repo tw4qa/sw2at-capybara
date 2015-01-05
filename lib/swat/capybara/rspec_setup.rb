@@ -5,7 +5,7 @@ module Swat
       def init_capybara
         before(:each) do |example|
           if example.metadata[:type] == :feature
-            swc_puts "\n #{ ?*.yellow } #{(' [ Test: ] ' + example.description + ' ').yellow }"
+            swc_puts "\n #{ ?*.yellow } #{('[TEST] ' + example.description + ' ').green }"
           end
         end
 
