@@ -28,9 +28,9 @@ module Swat
 
       def check_presence(*args)
         wait_for_condition do
-          all(*args).count == 1
+          all(*args).count > 0
         end
-        raise ElementNotFound unless all(*args).count == 1
+        raise ElementNotFound unless all(*args).count > 0
       end
 
       def check_absence(*args)
