@@ -1,5 +1,6 @@
 module Swat
   module Capybara
+    require 'swat/capybara/print_helper'
     require 'swat/capybara/helpers'
     require 'swat/capybara/config'
 
