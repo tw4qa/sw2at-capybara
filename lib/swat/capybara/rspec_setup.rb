@@ -10,9 +10,9 @@ module Swat
 
         after(:each) do |example|
           if example.exception.nil?
-            swc_puts "[PASSED] #{ example.description }".green
+            swc_puts "\n[PASSED] #{ example.description }".green
           else
-            swc_puts "[FAILED] #{ example.description }".red
+            swc_puts "\n[FAILED] #{ example.description }".red
           end
         end
 
