@@ -11,7 +11,7 @@ module Swat
       end
 
       def explain_step(message)
-        swc_print "\n - #{message.blue} "
+        swc_print " - #{message.blue} \n"
         @swc_step ||= 1
         yield() if block_given?
         @swc_step += 1
