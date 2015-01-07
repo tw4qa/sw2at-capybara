@@ -5,14 +5,16 @@ module Swat
       def init_capybara
         before(:each) do |example|
           type = example.metadata[:type] == :feature ? 'FEATURE' : 'TEST'
-          swc_puts "\n#{ "[#{type}] " + example.description }".yellow
+          swc_puts "\n#{ "[#{type}] " + example.description }".yellow if example.metadata[:type]
         end
 
         after(:each) do |example|
-          if example.exception.nil?
-            swc_puts "\n[PASSED] #{ example.description }".green
-          else
-            swc_puts "\n[FAILED] #{ example.description }".red
+          if example.metadata[:type]
+            if example.exception.nil?
+              swc_puts "\n[PASSED] #{ example.description }".green
+            else
+              swc_puts "\n[FAILED] #{ example.description }".red
+            end
           end
         end
 
