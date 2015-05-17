@@ -15,6 +15,10 @@ module Swat
         @swc_step ||= 1
         yield() if block_given?
         @swc_step += 1
+      rescue Exception => e
+        raise_again = !ENV['SWAT_STOP_FAIL']
+        binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
+        raise e.message if raise_again
       end
 
       alias_method :step, :explain_step
@@ -110,8 +114,9 @@ module Swat
           sleep(Capybara.config.min_pause)
           false
         end
-        binding.pry if ENV['FPRY']
-        false
+        result = ENV['SWAT_STOP_FAIL'] || false
+        binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
+        result
       end
 
       def print_failed_args(res, args, message=nil)
