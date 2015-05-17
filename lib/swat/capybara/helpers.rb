@@ -16,9 +16,11 @@ module Swat
         yield() if block_given?
         @swc_step += 1
       rescue Exception => e
+        swc_print "#{e.message.red}\n"
+        swc_print "#{e.backtrace.red}\n"
         raise_again = !ENV['SWAT_STOP_FAIL']
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
-        raise e.message if raise_again
+        raise e if raise_again
       end
 
       alias_method :step, :explain_step
@@ -114,6 +116,7 @@ module Swat
           sleep(Capybara.config.min_pause)
           false
         end
+        swc_puts "Failed: #{yield.to_s.to_source.red}"
         result = ENV['SWAT_STOP_FAIL'] || false
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
         result
