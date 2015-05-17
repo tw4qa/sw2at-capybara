@@ -17,7 +17,7 @@ module Swat
         @swc_step += 1
       rescue Exception => e
         swc_print "#{e.message.red}\n"
-        swc_print "#{e.backtrace.red}\n"
+        swc_print "#{e.backtrace.map &:red}\n"
         raise_again = !ENV['SWAT_STOP_FAIL']
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
         raise e if raise_again
