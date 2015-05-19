@@ -16,11 +16,17 @@ module Swat
         yield() if block_given?
         @swc_step += 1
       rescue Exception => e
-        swc_print "#{e.message.red}\n"
-        swc_print "#{e.backtrace.map &:red}\n"
         raise_again = !ENV['SWAT_STOP_FAIL']
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
         raise e if raise_again
+      end
+
+      def print_exception(ex)
+        swc_print "\n#{e.message.red}\n"
+        ex.backtrace.select{|l|l.to_s.include?(Rails.root)}.map(&:red).each do |line|
+          swc_print "\n#{line.red}\n"
+        end
+      rescue
       end
 
       alias_method :step, :explain_step
@@ -107,16 +113,16 @@ module Swat
         true
       end
 
-      def wait_for_condition(tries = Capybara.config.tries)
+      def wait_for_condition(tries = Capybara.config.tries, &condition)
         swc_print Capybara.config.output[:started]
         tries.times do
           swc_print Capybara.config.output[:step]
-          result = yield()
+          result = condition.()
           return result if result
           sleep(Capybara.config.min_pause)
           false
         end
-        swc_puts "Failed: #{yield.to_s.to_source.red}"
+        swc_puts "Failed: #{condition.to_s.to_source.red}" rescue nil
         result = ENV['SWAT_STOP_FAIL'] || false
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
         result
