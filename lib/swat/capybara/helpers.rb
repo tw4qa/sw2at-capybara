@@ -23,7 +23,7 @@ module Swat
       end
 
       def print_exception(ex)
-        swc_print "\n#{e.message.red}\n"
+        swc_print "\n#{ex.message.red}\n"
         ex.backtrace.select{|l|l.to_s.include?(Rails.root)}.map(&:red).each do |line|
           swc_print "\n#{line.red}\n"
         end
