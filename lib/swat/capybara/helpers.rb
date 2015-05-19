@@ -15,10 +15,11 @@ module Swat
         @swc_step ||= 1
         yield() if block_given?
         @swc_step += 1
-      rescue Exception => e
+      rescue Exception => ex
+        print_exception(ex)
         raise_again = !ENV['SWAT_STOP_FAIL']
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
-        raise e if raise_again
+        raise ex if raise_again
       end
 
       def print_exception(ex)
@@ -122,7 +123,7 @@ module Swat
           sleep(Capybara.config.min_pause)
           false
         end
-        swc_puts "Failed: #{condition.to_s.to_source.red}" rescue nil
+        swc_puts "Failed: #{condition.to_source.red}" rescue nil
         result = ENV['SWAT_STOP_FAIL'] || false
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
         result
