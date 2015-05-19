@@ -80,10 +80,10 @@ module Swat
         result = nil
         wait_for_condition(tries) do
           container = safe_find(selector)
-          text = container.text
+          local_text = container.text
           result = Hash[
               [ text ].flatten.map do |word|
-                [ word, text.include?(word) ]
+                [ word, local_text.include?(word) ]
               end
           ]
           result.values.all?{|v|v}
