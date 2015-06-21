@@ -15,11 +15,11 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "sw2at-capybara"
-  gem.homepage = "http://github.com/tarvit/sw2at-capybara"
+  gem.homepage = "http://github.com/tw4qa/sw2at-capybara"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "vitaliyt@interlink-ua.com"
+  gem.summary = %Q{ Extension to capybara. }
+  gem.description = %Q{ Gem helps to create capybara tests for pages with a very dynamic content.  }
+  gem.email = "vetal.tarasenko@gmail.com"
   gem.authors = ["Vitaly Tarasenko"]
   # dependencies defined in Gemfile
 end
