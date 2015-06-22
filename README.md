@@ -1,4 +1,4 @@
-# sw2at-capybara is suite of metods, whcich help to make test automation easier, faster and more stable. 
+sw2at-capybara is suite of methods, which help to make test automation easier, faster and more stable.
 
 Description goes here.
 
