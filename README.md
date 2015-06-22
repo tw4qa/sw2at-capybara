@@ -7,7 +7,8 @@ Installation
 -----------------
 
     gem install sw2at-capybara
-
+    or
+    gem 'sw2at-capybara'
 Contributing to sw2at-capybara
 -----------------
  
