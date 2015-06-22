@@ -66,7 +66,8 @@ How it looks
       end
     end
 ```
-    
+
+![alt tag](https://github.com/tw4qa/swat-capybara-example/blob/master/console_log.png)
     
 Contributing to sw2at-capybara
 -----------------
