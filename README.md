@@ -18,7 +18,7 @@ Using
 -----------------
 
 Add to your spec_helper.rb
-
+```ruby
     require 'capybara'
     Swat::Capybara.setup(config, { default_pause: 0.5,
        min_pause: 0.3,
@@ -65,6 +65,8 @@ How it looks
         end
       end
     end
+```ruby
+    
     
 Contributing to sw2at-capybara
 -----------------
