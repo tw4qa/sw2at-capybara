@@ -22,7 +22,7 @@ Add to your spec_helper.rb
        tries: 10,
        default_selector: 'body',
        output: { enabled: true, started: ?>, step: ?. }
-   })
+    })
     
 Contributing to sw2at-capybara
 -----------------
