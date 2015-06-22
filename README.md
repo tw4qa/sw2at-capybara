@@ -7,8 +7,6 @@ Installation
 -----------------
 
     gem 'sw2at-capybara' # add to your Gemfile
-    or
-    gem install sw2at-capybara # install on your PC
     
 Contributing to sw2at-capybara
 -----------------
