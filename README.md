@@ -3,6 +3,11 @@ sw2at-capybara
 
 sw2at-capybara is a suite of methods, which help to make test automation easier, faster and more stable.
 
+A little about sw2at-capybara
+-----------------
+
+We really like Rspec and Capybara, they work really well.
+
 Installation
 -----------------
 
