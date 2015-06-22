@@ -14,6 +14,9 @@ Run bundle install
     
     bundle install
     
+Using
+-----------------
+
 Add to your spec_helper.rb
 
     require 'capybara'
