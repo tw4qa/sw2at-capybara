@@ -4,6 +4,7 @@ gem 'rspec'
 gem 'sourcify'
 gem 'capybara', '>= 2.2.0'
 gem 'selenium-webdriver', '>= 2.43.0'
+gem 'tarvit-helpers', '>= 0.0.8'
 gem 'pry', '~> 0.10.1'
 
 group :development do
