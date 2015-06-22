@@ -24,4 +24,6 @@ Copyright
 Copyright (c) 2015 Vitaly Tarasenko. See LICENSE.txt for
 further details.
 
+Example
+-----------------
 [See simple swat-capybara example here!](https://github.com/tw4qa/swat-capybara-example)
