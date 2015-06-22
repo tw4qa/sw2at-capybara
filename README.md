@@ -26,14 +26,14 @@ Add to your spec_helper.rb
        default_selector: 'body',
        output: { enabled: true, started: ?>, step: ?. }
     })
-    
+```ruby
 Examples
 -----------------
 [See simple swat-capybara example here!](https://github.com/tw4qa/swat-capybara-example)
 
 How it looks
 -----------------
-
+```ruby
     describe 'Google Search', type: :feature do
     
       before :all do
