@@ -1,5 +1,6 @@
 require 'swat/capybara/exceptions'
-require 'swat/capybara/colorize'
+require 'tarvit-helpers/extensions/colored_string'
+require 'ostruct'
 
 module Swat
   module Capybara
@@ -11,21 +12,19 @@ module Swat
       end
 
       def explain_step(message)
-        swc_print "\n - #{message.blue}"
-        @swc_step ||= 1
+        swat_logger.print "\n - #{message.blue}"
         yield() if block_given?
-        @swc_step += 1
       rescue Exception => ex
         print_exception(ex)
-        raise_again = !ENV['SWAT_STOP_FAIL']
-        binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
+        raise_again = !swat_stop_fail?
+        binding.pry if swat_debug?
         raise ex if raise_again
       end
 
       def print_exception(ex)
-        swc_print "\n#{ex.message.red}\n"
-        ex.backtrace.select{|l|l.to_s.include?(Rails.root.to_s)}.map(&:red).each do |line|
-          swc_print "\n#{line.red}"
+        swat_logger.print "\n#{ex.message.red}\n"
+        ex.backtrace.each do |line|
+          swat_logger.print "\n#{line.red}"
         end
       end
 
@@ -71,10 +70,34 @@ module Swat
         all(*args)
       end
 
+      def select_option(selector, value)
+        dropdown = safe_find(selector)
+        wait_for_condition do
+          dropdown.all(:option).map(&:text).include? value
+        end
+        dropdown.all(:option).select{|op| op.text == value}.first.select_option
+      end
+
+      def safe_set(field, value)
+        safe_find(field).set(value)
+      end
+
+      def page_refresh
+        page.driver.browser.navigate.refresh
+      end
+
+      def sub_step(message)
+        swat_logger.print "\n    > #{message.blue} ".yellow
+        yield() if block_given?
+      end
+
+      def xstep name
+        swat_logger.print "Skipped step: #{name}"
+      end
+
       def click_by_text(text, tag='span')
         safe_click(tag, text: text)
       end
-
 
       def check_text(text, selector=Capybara.config.default_selector, tries=Capybara.config.tries)
         result = nil
@@ -114,23 +137,41 @@ module Swat
       end
 
       def wait_for_condition(tries = Capybara.config.tries, &condition)
-        swc_print Capybara.config.output[:started]
+        swat_logger.print Capybara.config.output[:started]
         tries.times do
-          swc_print Capybara.config.output[:step]
+          swat_logger.print Capybara.config.output[:step]
           result = condition.()
           return result if result
           sleep(Capybara.config.min_pause)
           false
         end
-        swc_puts "Failed: #{condition.to_source.red}" rescue nil
+        swat_logger.puts "Failed: #{condition.to_source.red}" rescue nil
         result = ENV['SWAT_STOP_FAIL'] || false
         binding.pry if (ENV['FPRY'] || ENV['SWAT_DBG'])
         result
       end
 
       def print_failed_args(res, args, message=nil)
-        swc_puts message.yellow if message
-        swc_puts "    With args: [#{args*', '}]".red  unless res
+        swat_logger.puts message.yellow if message
+        swat_logger.puts "    With args: [#{args*', '}]".red  unless res
+      end
+
+      def swat_store
+        @swat_store ||= OpenStruct.new
+      end
+
+      def swat_logger
+        swat_store.swat_logger ||= TarvitHelpers::ConditionalLogger.new do
+          !ENV['SWAT_LOGS_DISABLED']
+        end
+      end
+
+      def swat_stop_fail?
+        !!ENV['SWAT_STOP_FAIL']
+      end
+
+      def swat_debug?
+        ENV['SWAT_DBG'] || ENV['FPRY']
       end
     end
 
