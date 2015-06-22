@@ -6,9 +6,10 @@ sw2at-capybara is a suite of methods, which help to make test automation easier,
 Installation
 -----------------
 
-    gem install sw2at-capybara
+    gem 'sw2at-capybara' # add to your Gemfile
     or
-    gem 'sw2at-capybara'
+    gem install sw2at-capybara # install of your PC
+    
 Contributing to sw2at-capybara
 -----------------
  
