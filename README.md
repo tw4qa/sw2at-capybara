@@ -24,3 +24,4 @@ Copyright
 Copyright (c) 2015 Vitaly Tarasenko. See LICENSE.txt for
 further details.
 
+[Read more words!](docs/more_words.md)
