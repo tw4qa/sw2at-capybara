@@ -24,13 +24,13 @@ Using
 
 Add to your spec_helper.rb
 ```ruby
-    require 'capybara'
-    Swat::Capybara.setup(config, { default_pause: 0.5,
-       min_pause: 0.3,
-       tries: 10,
-       default_selector: 'body',
-       output: { enabled: true, started: ?>, step: ?. }
-    })
+require 'capybara'
+Swat::Capybara.setup(config, { default_pause: 0.5,
+   min_pause: 0.3,
+   tries: 10,
+   default_selector: 'body',
+   output: { enabled: true, started: ?>, step: ?. }
+})
 ```
 Examples
 -----------------
