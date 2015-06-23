@@ -31,6 +31,7 @@ it 'should do its job' do
   step 'Ensure that the result is saved' do
     # pending
   end
+end  
 ```
 
 Installation
