@@ -6,7 +6,7 @@ sw2at-capybara is a suite of methods, which help to make test automation easier,
 A little about sw2at-capybara
 -----------------
 
-We really like Rspec and Capybara, they work really well.
+We really like Rspec and Capybara. 
 
 Installation
 -----------------
@@ -22,7 +22,7 @@ Run bundle install
 Using
 -----------------
 
-Add to your spec_helper.rb
+Add the following to your spec_helper.rb
 ```ruby
 require 'capybara'
 Swat::Capybara.setup(config, { default_pause: 0.5,
@@ -32,6 +32,28 @@ Swat::Capybara.setup(config, { default_pause: 0.5,
    output: { enabled: true, started: ?>, step: ?. }
 })
 ```
+So your spec_helper.rb might look like the following:
+
+```ruby
+ENV['RAILS_ENV'] = 'test'
+require File.expand_path('../../config/environment', __FILE__)
+require 'pry'
+require 'capybara'
+
+RSpec.configure do |config|
+
+  Capybara.default_driver = :selenium
+  config.include Capybara::DSL, type: :feature
+
+  Swat::Capybara.setup(config, { default_pause: 0.5,
+       min_pause: 0.3,
+       tries: 10,
+       default_selector: 'body',
+       output: { enabled: true, started: ?>, step: ?. }
+   })
+end
+```
+
 Examples
 -----------------
 [See simple swat-capybara example here!](https://github.com/tw4qa/swat-capybara-example)
