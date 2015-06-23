@@ -13,9 +13,12 @@ module Swat
         RSpec::Core::Formatters.register self, :example_started, :example_passed, :example_failed, :start, :stop
 
         START_MESSAGE = <<STM
--------------------------------
- [ SW2AT-CAPYBARA initialized ]
--------------------------------
+
+   _|_|_|  _|          _|    _|_|    _|_|_|_|_|
+ _|        _|          _|  _|    _|      _|
+   _|_|    _|    _|    _|  _|_|_|_|      _|
+       _|    _|  _|  _|    _|    _|      _|
+ _|_|_|        _|  _|      _|    _|      _|
 STM
 
         def initialize(arg)
