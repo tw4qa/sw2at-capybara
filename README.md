@@ -72,11 +72,9 @@ RSpec.configure do |config|
   Capybara.default_driver = :selenium
   config.include Capybara::DSL, type: :feature
 
-  Swat::Capybara.setup(config, { default_pause: 0.5,
-       min_pause: 0.3,
+  Swat::Capybara.setup(config, { 
        tries: 10,
        default_selector: 'body',
-       output: { enabled: true, started: ?>, step: ?. }
    })
 end
 ```
