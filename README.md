@@ -6,8 +6,7 @@ sw2at-capybara is a suite of methods, which help to make test automation easier,
 A little about sw2at-capybara
 -----------------
 
-sw2at-capybara has steps like Cucumber does, but here it's not something mendatory, it's up to your. Why do we use steps? The answer is simple, it helps us to print a good console output what helps us to understend the problem better, and it allows you to understend what's happining when you look at the console and browser window.
-On the other hand the steps can be written by someone who knows nothing about programming, it might be a QA or even customer. 
+sw2at-capybara has steps like Cucumber does, but here it's not something mandatory, it's up to your. Why do we use steps? The answer is simple, it helps us to print a good console output what helps us to understand the problem better, and it allows you to understand what's happening when you look at the console and browser window. On the other hand the steps can be written by someone who knows nothing about programming, it might be a QA or even customer.
 
 Installation
 -----------------
