@@ -12,8 +12,9 @@ Installation
 -----------------
 
 Add to your Gemfile
-
-    gem 'sw2at-capybara'
+```ruby
+gem 'sw2at-capybara'
+```
     
 Run bundle install
     
@@ -56,7 +57,7 @@ end
 
 Examples
 -----------------
-[See simple swat-capybara example here!](https://github.com/tw4qa/swat-capybara-example)
+See a simple swat-capybara example[ here](https://github.com/tw4qa/swat-capybara-example).
 
 How it looks
 -----------------
