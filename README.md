@@ -53,6 +53,9 @@ Using
 Add the following to your spec_helper.rb
 ```ruby
 require 'capybara'
+require 'rspec/core/formatters/base_text_formatter'
+config.formatter = RSpec::Core::Formatters::BaseTextFormatter # if you don't use any custom formatters.
+
 Swat::Capybara.setup(config, { default_pause: 0.5,
    min_pause: 0.3,
    tries: 10,
