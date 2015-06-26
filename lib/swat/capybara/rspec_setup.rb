@@ -34,7 +34,8 @@ STM
 
         def example_started(notification)
           @started = Time.now
-          @swat_logger.puts "\n[FEATURE] #{notification.example.description}".yellow
+          example_type = notification.example.metadata[:type].to_s.upcase
+          @swat_logger.puts "\n[#{example_type}] #{notification.example.description}".yellow
         end
 
         def example_passed(notification)
